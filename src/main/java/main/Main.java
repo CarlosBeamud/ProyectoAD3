@@ -52,14 +52,12 @@ public class Main {
                     buscarProdSuperior();
                     break;
                 case 9:
-                    buscarEmpleadoPorContrato();
+                    buscarProductoPorRango();
                     break;
                 case 0:
                     salir = false;
                     break;
             }
-
-
         }
     }
 
@@ -169,24 +167,18 @@ public class Main {
             System.out.println("No se ha podiddo buscar");
         }
     }
-    public static void buscarEmpleadoPorContrato(){
-        System.out.println("Introduce un tipo de contrato para buscar empleados: I/Indefinido , T/Temporal , PO/Por obra");
-        String tipo = pedirString();
-        String contrato = "";
-        if(tipo.toUpperCase().equals("I")){
-            contrato = "Indefinido";
-        } else if(tipo.toUpperCase().equals("T")){
-            contrato = "Temporal";
-        }else if (tipo.toUpperCase().equals("PO")){
-            contrato = "Por Obra";
-        }
+    public static void buscarProductoPorRango(){
+        System.out.println("Introduce un precio minimo por el que buscar productos");
+        double precioMin = pedirDouble();
+        System.out.println("Introduce un precio maximo por el que buscar productos");
+        double precioMax = pedirDouble();
         try {
-            ArrayList<Empleado> empleados = (ArrayList<Empleado>) EmpleadoDAO.buscarPorContrato(contrato);
-            for (Empleado e : empleados){
-                System.out.println(e.toString());
+            ArrayList<Producto> productos = (ArrayList<Producto>) ProductoDAO.buscarPorRango(precioMin,precioMax);
+            for (Producto p : productos){
+                System.out.println(p.toString());
             }
         }catch(RollbackException e){
-            System.out.println("No se ha podido buscar");
+            System.out.println("No se ha podiddo buscar");
         }
     }
 

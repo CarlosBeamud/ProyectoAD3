@@ -50,5 +50,16 @@ public class ProductoDAO {
         return productos;
     }
 
+    public static List<Producto> buscarPorRango (double precioMin, double precioMax) {
+        EntityManager em = ConexionODB.connect();
+        String jpql = "SELECT p FROM Producto p WHERE p.precio > :precMin AND p.precio < :precMax" ;
+        Query query = em.createQuery(jpql);
+        query.setParameter("precMin", precioMin);
+        query.setParameter("precMax", precioMax);
+        List<Producto> productos = query.getResultList();
+        em.close();
+        return productos;
+    }
+
 
 }

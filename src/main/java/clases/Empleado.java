@@ -10,7 +10,7 @@ public class Empleado {
     @Id private int idEmpleado;
     private String nombre;
     private String apellido;
-    @Embedded private Contrato contrato;
+    @Embedded protected Contrato contrato;
 
     public Empleado(int idEmpleado, String nombre, String apellido,Contrato contrato) {
         this.idEmpleado = idEmpleado;

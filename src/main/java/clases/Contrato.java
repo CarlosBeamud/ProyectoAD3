@@ -1,12 +1,13 @@
 package clases;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Id;
 
 @Embeddable
 public class Contrato {
 
     private int idContrato;
-    private String tipoContrato;
+    protected String tipoContrato;
 
     public Contrato(int idContrato,String tipoContrato) {
         this.tipoContrato = tipoContrato;

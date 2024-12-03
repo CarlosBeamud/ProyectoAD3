@@ -42,15 +42,4 @@ public class EmpleadoDAO {
         em.remove(e);
         em.getTransaction().commit();
     }
-
-    public static List<Empleado> buscarPorContrato(String tipo) {
-        EntityManager em = ConexionODB.connect();
-        //String jpql = "SELECT e FROM Empleado e WHERE e.contrato.tipoContrato = 'Indefinido'" ;
-        String jpql = "SELECT e FROM Empleado e WHERE e.contrato.tipoContrato LIKE 'Indefinido'" ;
-        Query query = em.createQuery(jpql);
-        //query.setParameter("cont", tipo);
-        List<Empleado> empleados = query.getResultList();
-        em.close();
-        return empleados;
-    }
 }
